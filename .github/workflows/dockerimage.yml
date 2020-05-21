@@ -18,15 +18,15 @@ jobs:
       run: docker build . --file src/main/docker/Dockerfile.native.multistage --tag docker.pkg.github.com/lars1974/quarkus-first/qf:latest
     - name: docker images
       run: docker images
-    - run: $env.SUPER_SECRET | docker login docker.pkg.github.com -u lars1974 --password-stdin
+    - run: $env:SUPER_SECRET | docker login docker.pkg.github.com -u lars1974 --password-stdin
       env: 
         SUPER_SECRET: ${{ secrets.GITHUB_TOKEN }}
     - run: docker push docker.pkg.github.com/lars1974/quarkus-first/qf:latest        
-    - name: Push image
-      uses: docker/build-push-action@v1
-      with:
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-        registry: docker.pkg.github.com
-        repository: lars1974/images/quarkus-first:latest
-        dockerfile: src/main/docker/Dockerfile.native.multistage
+   # - name: Push image
+  #    uses: docker/build-push-action@v1
+   #   with:
+   #     username: ${{ github.actor }}
+   #     password: ${{ secrets.GITHUB_TOKEN }}
+   #     registry: docker.pkg.github.com
+   #     repository: lars1974/images/quarkus-first:latest
+   #     dockerfile: src/main/docker/Dockerfile.native.multistage
