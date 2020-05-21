@@ -14,9 +14,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        login-server: docker.pkg.github.com
+        username: $GITHUB_ACTOR
+        password: ${{ secrets.GITHUB_TOKEN }}
     - name: Build the Docker image
       run: docker build . --file src/main/docker/Dockerfile.native.multistage --tag docker.pkg.github.com/lars1974/images/quarkus-first:latest
     - name: docker images
       run: docker images
     - name: Push image
       run: docker push docker.pkg.github.com/lars1974/images/quarkus-first:latest
+     
