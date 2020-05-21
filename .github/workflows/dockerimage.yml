@@ -15,13 +15,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file src/main/docker/Dockerfile.native.multistage --tag docker.pkg.github.com/lars1974/images/quarkus-first:latest
+      run: docker build . --file src/main/docker/Dockerfile.native.multistage --tag lars1974/images/quarkus-first:latest
     - name: docker images
       run: docker images
     - name: Push image
       uses: docker/build-push-action@v1
       with:
-        login-server: docker.pkg.github.com
-        username: $GITHUB_ACTOR
+        username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-        repository: docker.pkg.github.com/lars1974/images/quarkus-first:latest     
+        registry: docker.pkg.github.com
+        repository: lars1974/images/quarkus-first:latest     
