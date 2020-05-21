@@ -24,4 +24,6 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: docker.pkg.github.com
-        repository: lars1974/images/quarkus-first:latest     
+        repository: lars1974/images/quarkus-first:latest
+        dockerfile: src/main/docker/Dockerfile.native.multistage
+        tags: latest
