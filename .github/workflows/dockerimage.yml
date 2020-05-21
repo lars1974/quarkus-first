@@ -14,6 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - run: docker login docker.pkg.github.com -u lars1974 --password ${{ secrets.GITHUB_TOKEN }}
     - name: Build the Docker image
       run: docker build . --file src/main/docker/Dockerfile.native.multistage --tag docker.pkg.github.com/lars1974/quarkus-first/qf:latest
     - name: docker images
