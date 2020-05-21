@@ -16,3 +16,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file src/main/docker/Dockerfile.native.multistage --tag my-image-name:$(date +%s)
+    - name: Build the Docker image
+      run: docker push docker.pkg.github.com/lars1974/images/quarkus-first:$(date +%s)
