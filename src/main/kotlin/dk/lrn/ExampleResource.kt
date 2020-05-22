@@ -10,8 +10,7 @@ import javax.ws.rs.core.MediaType
 
 @Path("/hello")
 class ExampleResource(
-        @ConfigProperty(name = "test")
-        val privateKey: String,
+
         @ConfigProperty(name = "greeting.message", defaultValue = "PRIT")
         val message: String
 ) {
@@ -21,5 +20,5 @@ class ExampleResource(
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    fun hello() = quarkus+privateKey+message
+    fun hello() = quarkus+message
 }
